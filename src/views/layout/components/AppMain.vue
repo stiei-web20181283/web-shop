@@ -22,10 +22,12 @@ export default {
 
 <style scoped>
 .app-main {
-  /*84 = navbar + tags-view = 50 +34 */
-  min-height: calc(100vh - 84px);
+  /* 主内容高度 */
+  min-height: calc(100vh - 101px);
   width: 100%;
   position: relative;
+  margin-top: 101px;
   overflow: hidden;
+  text-align: center;
 }
 </style>

@@ -1,44 +1,57 @@
 <template>
   <div class="nav-menu">
       <el-menu
-      :default-active="activeIndex2"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
-      <el-menu-item index="1">处理中心</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="3" disabled>消息中心</el-menu-item>
-      <el-menu-item index="4">订单管理</el-menu-item>
-    </el-menu>
+        :show-timeout="200"
+        :default-active="$route.path"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect">
+        <el-image class="logo" src="https://iph.href.lu/150x50?fg=666&bg=ccc&text=logo"></el-image>
+        <menu-item :routes="routes"></menu-item>
+      </el-menu>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+import MenuItem from './MenuItem'
+
 export default {
   name: 'NavMenu',
+  components: { MenuItem },
   data () {
     return {
-      activeName: 'second',
-      activeIndex2: '1'
+
     }
   },
   methods: {
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
     }
+  },
+  computed: {
+    ...mapGetters([
+      'permission_routes'
+    ]),
+    routes () {
+      // return this.$router.options.routes
+      return this.permission_routes
+    }
   }
 }
 </script>
+<style scoped>
+.nav-menu{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.nav-menu .el-menu-demo{
+  height: 100px; /* 顶部导航 */
+}
+.nav-menu .logo{
+  float: left;
+  margin: 20px 100px 20px 30px;
+  z-index: 1;
+}
+</style>
