@@ -30,7 +30,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'permission_routes'
+      'permission_routes',
+      'menu_position'
     ]),
     routes () {
       // return this.$router.options.routes
@@ -48,6 +49,7 @@ export default {
 }
 .nav-menu .el-menu-demo{
   height: 100px; /* 顶部导航 */
+  min-width: 1000px;
 }
 .nav-menu .logo{
   float: left;

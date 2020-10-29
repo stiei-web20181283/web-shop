@@ -43,6 +43,7 @@ function getMenu (name, menus) {
   return null
 }
 const state = {
+  position: sessionStorage.getItem('position'),
   routes: constantRouterMap,
   addRoutes: []
 }

@@ -29,7 +29,7 @@ export const constantRouterMap = [
         path: 'home',
         name: 'Home',
         component: () => import('@/views/homePage/index'),
-        meta: { title: '首页', icon: 'el-icon-star-off' }
+        meta: { title: '首页', icon: 'el-icon-star-off', index: 0 }
       }
     ]
   },
@@ -42,7 +42,7 @@ export const constantRouterMap = [
       path: 'product',
       name: 'product',
       component: () => import('@/views/productPage/product/index'),
-      meta: {title: '商品列表', icon: 'product-list'}
+      meta: {title: '商品列表', icon: 'product-list', index: 1}
     }]
   },
   {
@@ -54,7 +54,7 @@ export const constantRouterMap = [
       path: 'activity',
       name: 'activity',
       component: () => import('@/views/activityPage/index'),
-      meta: {title: '活动列表', icon: 'product-list'}
+      meta: {title: '活动列表', icon: 'product-list', index: 2}
     }]
   },
   {
@@ -66,7 +66,7 @@ export const constantRouterMap = [
       path: 'discount',
       name: 'discount',
       component: () => import('@/views/discountPage/index'),
-      meta: {title: '折扣', icon: 'product-list'}
+      meta: {title: '折扣', icon: 'product-list', index: 3}
     }]
   }
 ]
