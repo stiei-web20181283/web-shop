@@ -1,7 +1,6 @@
 <template>
   <div class="nav-menu">
       <el-menu
-        :show-timeout="200"
         :default-active="$route.path"
         class="el-menu-demo"
         mode="horizontal"
@@ -49,11 +48,11 @@ export default {
 }
 .nav-menu .el-menu-demo{
   height: 100px; /* 顶部导航 */
-  min-width: 1000px;
+  min-width: 1920px;
 }
 .nav-menu .logo{
   float: left;
-  margin: 20px 100px 20px 30px;
+  margin: 20px 30px;
   z-index: 1;
 }
 </style>

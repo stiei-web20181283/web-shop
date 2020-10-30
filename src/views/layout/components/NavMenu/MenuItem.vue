@@ -5,9 +5,9 @@
       <!-- v-if="hasOneShowingChildren(item.children) && !item.children[0].children&&!item.alwaysShow" -->
       <router-link class="menu-link" ref="menu_link"
         :to="item.path+'/'+item.children[0].path"
-        :key="item.index"
+        :key="item.children[0].name"
         >
-        <el-menu-item @click="move(item)" :index="item.path+'/'+item.children[0].path">
+        <el-menu-item @click="move(item,$event)" :class="item.children[0].meta.class" :index="item.path+'/'+item.children[0].path">
           <el-image src="https://iph.href.lu/30x30?fg=666&bg=ccc">1
           </el-image>
           <div class="title">{{item.children[0].meta.title}}</div>
@@ -15,29 +15,27 @@
       </router-link>
       </template>
     </template>
-    <div ref="slideBackground" class="menuBg">{{this.$route.meta.index}}</div>
+    <!-- 导航标签背景 -->
+    <div class="menuBg" :style="style">{{this.$route.meta.index}}</div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'MenuItem',
   props: {
     routes: {
       type: Array
-    },
-    isNest: {
-      type: Boolean,
-      default: false
     }
   },
   data () {
     return {
+      position: 0,
       style: {
-
-      },
-      positionX: 0,
-      positionY: 0,
-      position: 0
+        left: null,
+        height: null,
+        BorderRadius: null
+      }
     }
   },
   methods: {
@@ -50,36 +48,46 @@ export default {
       }
       return false
     },
-    move: function (item) {
-      let bg = this.$refs.slideBackground
+    move: function (item, e) {
       this.position = item.children[0].meta.index
-      if (this.position === 0) {
-        bg.style.left = '10px'
-      } else {
-        bg.style.left = 10 + 120 * this.position + 'px'
-      }
-      console.log(item)
-      // this.$refs.slideBackground.style.left = 100 * (this.$route.meta.index - 1) + 'px'
+      this.style.height = '100px'
+      this.style.BorderRadius = '10px'
+      setTimeout(() => {
+        this.style.left = 100 * this.position + 'px'
+      }, 200)
+      setTimeout(() => {
+        this.style.height = '120px'
+        this.style.BorderRadius = '0 0 20px 20px'
+      }, 500)
+      console.log(e.$el.className)
     }
   },
   mounted () {
     this.$nextTick(() => {
-      this.position = this.menu_position
+      // this.position = this.menu_position
       // let link = this.$refs.menu_link
       // let r = this.$route.meta.index - 1
       // let bg = this.$refs.slideBackground
       // bg.style.left = 100 * r + 'px'
     })
-    // this.$refs.slideBackground.style.left = 100 * (this.$route.meta.index - 1) + 'px'
   },
   created () {
+    this.style.left = this.menuPosition * 100 + 'px'
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('position', JSON.stringify(this.position))
     })
   },
+  computed: {
+    ...mapGetters([
+      'menu_position'
+    ]),
+    menuPosition () {
+      return this.menu_position
+    }
+  },
   watch: {
     position: function (e) {
-      console.log('position', e)
+      console.log('position', e, '\n==================')
     }
   }
 }
@@ -94,7 +102,7 @@ export default {
     width: 100px;
     height: 100px; /* 导航元素高度 */
     line-height: normal;
-    margin: 0 10px;
+    // margin: 0 10px;
     padding: 0;
     color: #5B5B5B;
     z-index: 100;
@@ -124,8 +132,8 @@ export default {
     position: absolute;
     top: 0;
     z-index: 1;
-    transition: all .3s ease-in-out;
-    left: 10px;
+    transition: all .5s ease-in-out;
+    // left: 10px;
     border-radius: 0 0 20px 20px;
   }
 }

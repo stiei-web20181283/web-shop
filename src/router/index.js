@@ -42,7 +42,7 @@ export const constantRouterMap = [
       path: 'product',
       name: 'product',
       component: () => import('@/views/productPage/product/index'),
-      meta: {title: '商品列表', icon: 'product-list', index: 1}
+      meta: {title: '全部商品', icon: 'product-list', index: 1}
     }]
   },
   {
@@ -54,19 +54,55 @@ export const constantRouterMap = [
       path: 'activity',
       name: 'activity',
       component: () => import('@/views/activityPage/index'),
-      meta: {title: '活动列表', icon: 'product-list', index: 2}
+      meta: {title: '活动专区', icon: 'product-list', index: 2}
     }]
   },
   {
     path: '/discountPage',
     component: Layout,
     name: 'discountPage',
-    meta: {title: '商品', icon: 'el-icon-star-off'},
+    meta: {title: '优惠', icon: 'el-icon-star-off'},
     children: [{
       path: 'discount',
       name: 'discount',
       component: () => import('@/views/discountPage/index'),
-      meta: {title: '折扣', icon: 'product-list', index: 3}
+      meta: {title: '优惠专区', icon: 'product-list', index: 3}
+    }]
+  },
+  {
+    path: '/vipPage',
+    component: Layout,
+    name: 'vipPage',
+    meta: {title: '会员', icon: 'el-icon-star-off'},
+    children: [{
+      path: 'vip',
+      name: 'vip',
+      component: () => import('@/views/vipPage/index'),
+      meta: {title: '会员专区', icon: 'product-list', index: 4}
+    }]
+  },
+  {
+    path: '/userPage',
+    component: Layout,
+    name: 'userPage',
+    meta: {title: '用户', icon: ''},
+    children: [{
+      path: 'user',
+      name: 'user',
+      component: () => import('@/views/userPage/index'),
+      meta: {title: '个人中心', icon: '', index: 5, class: 'menu-right menu-user'}
+    }]
+  },
+  {
+    path: '/cartPage',
+    component: Layout,
+    name: 'cartPage',
+    meta: {title: '购物车', icon: ''},
+    children: [{
+      path: 'cart',
+      name: 'cart',
+      component: () => import('@/views/cartPage/index'),
+      meta: {title: '购物车', icon: '', index: 6, class: 'menu-right menu-cart'}
     }]
   }
 ]

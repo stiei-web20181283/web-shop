@@ -25,10 +25,11 @@ export default {
 <style scoped>
 .app-main {
   /* 主内容高度 */
-  min-height: calc(100vh - 101px);
-  width: 100%;
+  min-height: calc(100vh - 159px);
+  /* width: 100%; */ /* padding设置影响width */
   position: relative;
   margin-top: 101px;
+  padding: 20px;
   overflow: hidden;
   text-align: center;
 }
