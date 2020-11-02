@@ -9,6 +9,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
   .footer-view{
     position: relative;
+    height: 250px;
     bottom: 0;
     width: 100%;
     background-color: #5b5b5b;

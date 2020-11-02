@@ -29,7 +29,7 @@ export default {
   /* width: 100%; */ /* padding设置影响width */
   position: relative;
   margin-top: 101px;
-  padding: 20px;
+  padding: 0;
   overflow: hidden;
   text-align: center;
 }

@@ -5,7 +5,6 @@
         class="el-menu-demo"
         mode="horizontal"
         @select="handleSelect">
-        <el-image class="logo" src="https://iph.href.lu/150x50?fg=666&bg=ccc&text=logo"></el-image>
         <menu-item :routes="routes"></menu-item>
       </el-menu>
   </div>
@@ -48,11 +47,6 @@ export default {
 }
 .nav-menu .el-menu-demo{
   height: 100px; /* 顶部导航 */
-  min-width: 1920px;
-}
-.nav-menu .logo{
-  float: left;
-  margin: 20px 30px;
-  z-index: 1;
+  min-width: 910px;
 }
 </style>

@@ -1,11 +1,42 @@
 <template>
   <div class="home">
-    home
-    <div v-for="i in 100" :key="i.index">{{i}}</div>
+    <!-- 轮播展示 -->
+    <carousel-banner></carousel-banner>
+    <!-- 新品推荐 -->
+    <new-product></new-product>
+
   </div>
 </template>
-<style scoped>
-/* .home{
-  height: 2000px;
-} */
+<script>
+import { CarouselBanner, NewProduct } from './components'
+export default {
+  name: 'home',
+  components: {
+    CarouselBanner,
+    NewProduct
+  }
+}
+</script>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.new-product{
+  h1{
+    margin-top: 50px;
+  }
+  .productCard-outer{
+    .productCard-inner{
+      float: left;
+      .el-card{
+        float: left;
+        background: red;
+        width: 285px;
+        border-radius:20px;
+        .el-image{
+          width: 285px;
+          height: 285px;
+        }
+      }
+    }
+  }
+  border:1px solid red;
+}
 </style>

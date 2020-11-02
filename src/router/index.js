@@ -90,8 +90,9 @@ export const constantRouterMap = [
       path: 'user',
       name: 'user',
       component: () => import('@/views/userPage/index'),
-      meta: {title: '个人中心', icon: '', index: 5, class: 'menu-right menu-user'}
-    }]
+      meta: {title: '个人中心', icon: '', index: -1, class: 'menu-user'}
+    }],
+    hidden: true
   },
   {
     path: '/cartPage',
@@ -102,8 +103,9 @@ export const constantRouterMap = [
       path: 'cart',
       name: 'cart',
       component: () => import('@/views/cartPage/index'),
-      meta: {title: '购物车', icon: '', index: 6, class: 'menu-right menu-cart'}
-    }]
+      meta: {title: '购物车', icon: '', index: -2, class: 'menu-cart'}
+    }],
+    hidden: true
   }
 ]
 
