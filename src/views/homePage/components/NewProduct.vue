@@ -19,7 +19,7 @@
             <el-card shadow="hover" :body-style="{ padding: '0px' }"  :key="i.index">
               <el-image
                 style="border-radius:20px"
-                src="https://iph.href.lu/285x285?fg=666&bg=ccc">
+                :src="i.img">
               </el-image>
               <div style="padding: 14px;">
                 <span>{{i.title}}</span>
@@ -41,13 +41,13 @@ export default {
       list: [],
       newProduct: [],
       newProductList: [
-        {img: '', title: '1'},
-        {img: '', title: '2'},
-        {img: '', title: '3'},
-        {img: '', title: '4'},
-        {img: '', title: '5'},
-        {img: '', title: '6'},
-        {img: '', title: '7'}
+        {img: 'https://iph.href.lu/285x285?fg=666&bg=ccc', title: '1'},
+        {img: 'https://iph.href.lu/285x285?fg=fff&bg=666', title: '2'},
+        {img: 'https://iph.href.lu/285x285?fg=666&bg=ccc', title: '3'},
+        {img: 'https://iph.href.lu/285x285?fg=fff&bg=666', title: '4'},
+        {img: 'https://iph.href.lu/285x285?fg=666&bg=ccc', title: '5'},
+        {img: 'https://iph.href.lu/285x285?fg=fff&bg=666', title: '6'},
+        {img: 'https://iph.href.lu/285x285?fg=666&bg=ccc', title: '7'}
       ],
       currentPage: 0, // 默认页码
       pageSize: 3, // 每页显示数
@@ -97,9 +97,7 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .new-product{
-  h1{
-    margin-top: 50px;
-  }
+   margin-top: 50px;
   .productCard-outer{
     .productCard-inner{
       .el-card{
@@ -118,10 +116,10 @@ export default {
         top:123px;// calc(50% - 20px);
       }
       .productCard-arrow.productCard-arrow_left{
-        left: 5%;
+        left: 30px;
       }
       .productCard-arrow.productCard-arrow_right{
-        right: 5%;
+        right: 30px;
       }
     }
   }
