@@ -78,8 +78,11 @@ export default {
       }
     }
     .newType-right{
-      position: relative;
+      // position: relative;
       width: 100%;
+      align-items: center;
+      display: flex;
+      justify-content: center;
     }
   }
   .newType-list{
