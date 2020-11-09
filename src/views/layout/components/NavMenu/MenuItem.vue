@@ -81,14 +81,27 @@ export default {
       }
       // console.log(e.$el.className)
     },
+    handleHistory: function () {
+      let index = this.$route.meta.index
+      console.log(index)
+      if (index >= 0) {
+        this.style.display = 'block'
+        this.style.left = index * 100 + 'px'
+      } else {
+        this.style.display = 'none'
+      }
+    },
     handleSelect: function (index, indexPath) {
       console.log('index', index)
     }
   },
   mounted () {
     this.$nextTick(() => {
-
     })
+    if (window.history && window.history.pushState) {
+      history.pushState(null, null, document.URL)
+      window.addEventListener('popstate', this.handleHistory, false)
+    }
   },
   created () {
     if (sessionStorage.position < 0) {
@@ -98,7 +111,6 @@ export default {
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('position', JSON.stringify(this.position))
     })
-    console.log(sessionStorage.position)
   },
   computed: {
     ...mapGetters([
@@ -112,6 +124,9 @@ export default {
     position: function (e) {
       console.log('position', e, '\n==================')
     }
+  },
+  destroyed () {
+    window.removeEventListener('popstate', this.handleHistory, false)
   }
 }
 </script>
